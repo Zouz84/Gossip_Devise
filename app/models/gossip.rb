@@ -10,6 +10,5 @@
 #
 
 class Gossip < ApplicationRecord
-	belongs_to :user, required: true
-
+	belongs_to :user, class_name: "User", foreign_key: "id"
 end
