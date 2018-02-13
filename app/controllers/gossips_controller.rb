@@ -28,7 +28,7 @@ class GossipsController < ApplicationController
     @gossip.user = current_user
     @gossip.save
     redirect_to gossips_path
-=begin
+
     respond_to do |format|
       if @gossip.save
         format.html { redirect_to @gossip, notice: 'Gossip was successfully created.' }
@@ -38,7 +38,7 @@ class GossipsController < ApplicationController
         format.json { render json: @gossip.errors, status: :unprocessable_entity }
       end
     end
-=end
+
   end
 
   # PATCH/PUT /gossips/1
