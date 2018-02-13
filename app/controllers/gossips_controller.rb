@@ -27,7 +27,8 @@ class GossipsController < ApplicationController
     @gossip = Gossip.new(gossip_params)
     @gossip.user = current_user
     @gossip.save
-    redirect_to gossips_path
+    redirect_to root_path
+=begin
 
     respond_to do |format|
       if @gossip.save
@@ -38,6 +39,7 @@ class GossipsController < ApplicationController
         format.json { render json: @gossip.errors, status: :unprocessable_entity }
       end
     end
+=end
 
   end
 
