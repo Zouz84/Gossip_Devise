@@ -2,17 +2,30 @@
 
 <h1>Gossips</h1>
 
+
 <table>
   <thead>
-    <tr>
+   
+  </thead>
+
+  <tbody>
+
+    <ul>
+  <% if user_signed_in? %>
+    <li>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+
+       <tr>
       <th>Anonymous author</th>
       <th>Content</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+    </li>
+    <li><%= current_user.email %></li>
 
-  <tbody>
-    <% @gossips.each do |gossip| %>
+    <li><%= link_to "Editer le profil", edit_user_registration_path %></li>
+
+<% @gossips.each do |gossip| %>
       <tr>
         <td><%= gossip.anonymous_author %></td>
         <td><%= gossip.content %></td>
@@ -21,9 +34,19 @@
         <td><%= link_to 'Destroy', gossip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+
+    <%= link_to 'New Gossip', new_gossip_path %>
+
+
+    <% else %>
+   
+   <p align="center"> Bonjour, tu veux ajouter les infos chaudes de ta région? connecte toi vite.</p 
+
+
+  <% end %>
+</ul>
+    
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Gossip', new_gossip_path %>
